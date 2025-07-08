@@ -22,6 +22,7 @@
 // STD
 #include <sstream>
 #include <algorithm>
+#include <iostream>
 
 // Boost
 #include <boost/core/demangle.hpp>
@@ -214,6 +215,11 @@ bool PluginLoader::isPluginAvailable(const std::string& plugin_name) const
 
   // Check for environment variable for search paths
   const std::set<std::string> search_paths_local = getAllSearchPaths(search_paths_env, search_paths);
+  std::cout << "search_paths_local: " << search_paths_local.size() << std::endl;
+  for (const auto& path : search_paths_local)
+  {
+    std::cout << "  " << path << std::endl;
+  }
 
   // Load the libraries
   const std::vector<boost::dll::shared_library> libraries =
