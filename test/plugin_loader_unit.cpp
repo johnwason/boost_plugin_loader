@@ -243,6 +243,24 @@ TEST(BoostPluginLoaderUnit, LoadTestPlugin)  // NOLINT
     plugin_loader.search_paths.insert("/aaaa/does_not_exist");
     plugin_loader.search_libraries.insert(std::string(PLUGINS));
 
+    // print DYLD_LIBRARY_PATH and DYLD_PLUGIN_PATH
+    // std::cout << "DYLD_LIBRARY_PATH: " << std::getenv("DYLD_LIBRARY_PATH") << std::endl;
+    const char* dyld_library_path = std::getenv("DYLD_LIBRARY_PATH");
+    if (dyld_library_path)
+    {
+      std::cout << "DYLD_LIBRARY_PATH: " << dyld_library_path << std::endl;
+    }
+    else
+    {
+      std::cout << "DYLD_LIBRARY_PATH is not set." << std::endl;
+    }
+
+    const char* dyld_plugin_path = std::getenv("DYLD_PLUGIN_PATH");
+    if (dyld_plugin_path)
+    {
+      std::cout << "DYLD_PLUGIN_PATH: " << dyld_plugin_path << std::endl;
+    }
+
     std::cout << "does_not_exist paths" << std::endl;
     for (const auto& path : plugin_loader.search_paths)
     {
