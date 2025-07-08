@@ -46,7 +46,7 @@ jobs:
       shell: bash
       run: |
         echo "DYLD_LIBRARY_PATH=$DYLD_LIBRARY_PATH:$GITHUB_WORKSPACE/vcpkg/installed/arm64-osx-release/lib" >> "$GITHUB_ENV"
-        echo "CMAKE_PREFIX_PATH=$GITHUB_WORKSPACE\vcpkg\installed\arm64-osx-release" >> "$GITHUB_ENV"
+        echo "CMAKE_PREFIX_PATH=$GITHUB_WORKSPACE/vcpkg/installed/arm64-osx-release" >> "$GITHUB_ENV"
 
     - name: Build and Tests
       uses: johnwason/colcon-action@macos
