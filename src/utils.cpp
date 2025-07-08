@@ -48,14 +48,14 @@ std::optional<boost::dll::shared_library> loadLibrary(const boost::filesystem::p
 {
   boost::dll::load_mode::type mode{ boost::dll::load_mode::type::default_mode };
 
-  if (!library_path.has_parent_path())
-  {
-    mode = boost::dll::load_mode::append_decorations | boost::dll::load_mode::search_system_folders;
-  }
-  else
-  {
+  // if (!library_path.has_parent_path())
+  // {
+  //   mode = boost::dll::load_mode::append_decorations | boost::dll::load_mode::search_system_folders;
+  // }
+  // else
+  // {
     mode = boost::dll::load_mode::append_decorations;
-  }
+  // }
 
   std::cout << "loadLibrary: " << library_path.string() <<  " mode: " << static_cast<int>(mode) << std::endl;
 
