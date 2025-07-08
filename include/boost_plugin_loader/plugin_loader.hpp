@@ -125,6 +125,7 @@ static std::vector<boost::dll::shared_library> loadLibraries(const std::set<std:
 
     // If the library cannot be found in any of the local search paths, search in the system level directories for the
     // library (if enabled)
+    std::cout << "search_system_folders: " << search_system_folders << std::endl;
     if (lib == std::nullopt && search_system_folders)
     {
       lib = loadLibrary(library_name);
