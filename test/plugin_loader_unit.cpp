@@ -243,6 +243,17 @@ TEST(BoostPluginLoaderUnit, LoadTestPlugin)  // NOLINT
     plugin_loader.search_paths.insert("does_not_exist");
     plugin_loader.search_libraries.insert(std::string(PLUGINS));
 
+    std::cout << "does_not_exist paths" << std::endl;
+    for (const auto& path : plugin_loader.search_paths)
+    {
+      std::cout << "  " << path << std::endl;
+    }
+    std::cout << "does_not_exist libraries" << std::endl;
+    for (const auto& lib : plugin_loader.search_libraries)
+    {
+      std::cout << "  " << lib << std::endl;
+    }
+
     EXPECT_FALSE(plugin_loader.isPluginAvailable("plugin"));
     // Behavior change: used to return nullptr but now throws exception
     // NOLINTNEXTLINE(cppcoreguidelines-avoid-goto)
