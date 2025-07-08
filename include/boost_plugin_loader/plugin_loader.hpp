@@ -116,6 +116,8 @@ static std::vector<boost::dll::shared_library> loadLibraries(const std::set<std:
       // If the library exists at this path, add the library to the output list and break out of the loop
       if (lib.has_value())
       {
+        std::cout << "found library using search path local " << search_path << ": "
+                  << boost::dll::shared_library::decorate(lib->location()).string() << std::endl;
         libraries.push_back(lib.value());
         break;
       }
@@ -129,7 +131,11 @@ static std::vector<boost::dll::shared_library> loadLibraries(const std::set<std:
 
       // Add the library to the output list, and break out of the loop
       if (lib.has_value())
+      {
+        std::cout << "found library using system folders: "
+                  << boost::dll::shared_library::decorate(lib->location()).string() << std::endl;
         libraries.push_back(lib.value());
+      }
     }
   }
 
