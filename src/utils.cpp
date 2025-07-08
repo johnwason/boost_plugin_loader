@@ -64,7 +64,7 @@ std::optional<boost::dll::shared_library> loadLibrary(const boost::filesystem::p
   if (ec)
     return std::nullopt;
   std::cout << "Loaded library: " << boost::dll::shared_library::decorate(lib.location()).string() << " with path: "
-            << lib.location().string() << " and mode: " << static_cast<int>(mode) << std::endl;
+            << library_path << " and mode: " << static_cast<int>(mode) << std::endl;
   return lib;
 }
 
