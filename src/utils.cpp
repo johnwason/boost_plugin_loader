@@ -37,6 +37,7 @@
 #include <optional>
 #include <cstring>
 #include <cstdlib>
+#include <iostream>
 
 // Boost Plugin Loader
 #include <boost_plugin_loader/utils.h>
@@ -55,6 +56,8 @@ std::optional<boost::dll::shared_library> loadLibrary(const boost::filesystem::p
   {
     mode = boost::dll::load_mode::append_decorations;
   }
+
+  std::cout << "loadLibrary: " << library_path.string() <<  " mode: " << static_cast<int>(mode) << std::endl;
 
   boost::system::error_code ec;
   boost::dll::shared_library lib = boost::dll::shared_library(library_path, ec, mode);
