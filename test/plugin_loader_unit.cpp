@@ -102,7 +102,7 @@ TEST(BoostPluginLoaderUnit, Utils)  // NOLINT
 
   {
     const std::optional<boost::dll::shared_library> lib =
-        loadLibrary(boost::filesystem::path("does_not_exist") / lib_name);
+        loadLibrary(boost::filesystem::path("/aaaaa/does_not_exist") / lib_name);
     EXPECT_FALSE(lib.has_value());
   }
 
@@ -240,7 +240,7 @@ TEST(BoostPluginLoaderUnit, LoadTestPlugin)  // NOLINT
   {
     PluginLoader plugin_loader;
     plugin_loader.search_system_folders = false;
-    plugin_loader.search_paths.insert("does_not_exist");
+    plugin_loader.search_paths.insert("/aaaa/does_not_exist");
     plugin_loader.search_libraries.insert(std::string(PLUGINS));
 
     std::cout << "does_not_exist paths" << std::endl;
