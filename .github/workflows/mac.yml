@@ -53,9 +53,9 @@ jobs:
       with:
         ccache-prefix: ${{ matrix.distro }}
         vcs-file: plugin_loader/dependencies.repos
-        upstream-args: --cmake-args -G "Ninja" -DVCPKG_TARGET_TRIPLET=arm64-osx-release -DCMAKE_BUILD_TYPE=Release
+        upstream-args: --merge-install --cmake-args -G "Ninja" -DVCPKG_TARGET_TRIPLET=arm64-osx-release -DCMAKE_BUILD_TYPE=Release
         target-path: workspace/src
-        target-args: --cmake-args -G "Ninja" -DVCPKG_TARGET_TRIPLET=arm64-osx-release -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DENABLE_CPACK=ON
+        target-args: --merge-install --cmake-args -G "Ninja" -DVCPKG_TARGET_TRIPLET=arm64-osx-release -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTING=ON -DENABLE_CPACK=ON
         rosdep-enabled: false
 
     - name: Package
