@@ -224,6 +224,10 @@ bool PluginLoader::isPluginAvailable(const std::string& plugin_name) const
   // Load the libraries
   const std::vector<boost::dll::shared_library> libraries =
       loadLibraries(library_names, search_paths_local, search_system_folders);
+  for (const auto& lib : libraries)
+  {
+    std::cout << "Checking library: " << boost::dll::shared_library::decorate(lib.location()).string() << std::endl;
+  }
 
   // Check for the symbol name
   return std::any_of(libraries.begin(), libraries.end(), [&](const auto& lib) { return lib.has(plugin_name); });
